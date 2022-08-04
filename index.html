@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lime Weather </title>
+
+    <!-- FAV ICON -->
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon"> <!-- FONT AWESOME -->
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- MEDIA RESPONSIVE -->
+    <link rel="stylesheet" href="css/media.css">
+
+    <script src="https://kit.fontawesome.com/998a5e6a74.js" crossorigin="anonymous"></script>
+    <!-- AOS ANIMATIONS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <img src="" alt="" class="image">
+
+    <div class="container" data-aos="fade-right">
+
+        <div>
+            <h3>Lime Weather</h3>
+        </div>
+
+        <div class="info">
+            <h1 class="temp">2&#176;</h1>
+            <div class="date-flex">
+                <h2 class="name" data-aos="fade-right"></h2>
+                <div class="date-row">
+                    <p class="time"></p>
+                    <p class="day"></p>
+                </div>
+            </div>
+
+            <div class="weather-flex">
+                <img class="weather-icon" src="icons/wi-night-rain.svg" alt="">
+                <p class="weather">
+                    Raining
+                </p>
+            </div>
+        </div>
+
+        <a href="#search"><i class="fa-solid fa-arrow-down" size="large"></i></a>
+
+    </div>
+
+    <!-- Search Menu -->
+
+    <div class="right-search" data-aos="fade-left" id="search">
+
+        <div class="blur"></div>
+
+        <p id="alert"></p>
+
+        <div class="search-flex">
+            <form id="locationInput">
+                <input type="text" class="search-location" placeholder="Search Location">
+                <button id="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+
+        </div>
+
+        <div class="cities-flex">
+            <ul>
+                <li class="city">Toronto</li>
+                <li class="city">Dallas</li>
+                <li class="city">Los Angeles</li>
+                <li class="city">Budapest</li>
+                <li class="city">Tokyo</li>
+                <li class="city">Hong Kong</li>
+
+            </ul>
+        </div>
+        <hr>
+        <div class="weather-details-flex">
+            <h3>Weather Details</h3>
+
+            <ul>
+                <div class="weather-details">
+                    <li>Cloudy</li>
+                    <li class="cloudy"></li>
+                </div>
+                <div class="weather-details">
+                    <li>Humidity</li>
+                    <li class="humidity"></li>
+                </div>
+                <div class="weather-details">
+                    <li>Wind</li>
+                    <li class="wind">/li>
+                </div>
+                <div class="weather-details">
+                    <li>Feels Like</li>
+                    <li class="feels-like"></li>
+                </div>
+
+
+            </ul>
+        </div>
+        <hr>
+    </div>
+    <script src="weatherAPI.js"></script>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000
+        });
+    </script>
+</body>
+
+</html>
