@@ -51,13 +51,20 @@ const searchInput = document.querySelector('.search-location');
 let cityName = document.querySelector('.name');
 
 //Default city when page loads
-let cityInput = 'Pickering';
+let cityInput = localStorage.getItem('city');
+
+if (localStorage.getItem('city') === null) {
+  //Default City if there is no local storage
+  cityInput = 'Toronto';
+} else {
+  // Weather Data on City that was last looked/Searched Up!
+  cityInput = localStorage.getItem('city');
+}
 
 // Fetch Weather on Loadup
 fetchWeatherData();
 
-// Added click event, so whenever a listed city is clicked
-// it changes city name to whatever city was clicked!
+// Click event changes city name to whatever city was clicked on <li>!
 cities.forEach((city) => {
   city.addEventListener('click', (e) => {
     // Changes City Heading to whatever li Name was clicked
@@ -67,6 +74,7 @@ cities.forEach((city) => {
     backgroundImage.style.opacity = '0';
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     fetchWeatherData();
+    localStorage.setItem('city', cityInput);
   });
 });
 
@@ -98,6 +106,7 @@ form.addEventListener('submit', (e) => {
     //Scroll to the top when city is entered
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     fetchWeatherData();
+    localStorage.setItem('city', cityInput);
     e.preventDefault();
   }
 });
