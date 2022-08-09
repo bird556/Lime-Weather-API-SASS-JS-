@@ -13,7 +13,7 @@ function fetchWeatherData() {
       //   temp.innerHTML = data.current.temp_c + '&#176;';
       temp.innerHTML = Math.round(data.current.temp_c) + '&#176;';
       weatherCondition.innerHTML = data.current.condition.text;
-      feelsLike.innerHTML = Math.round(data.current.feelslike_c) + '&#176;';
+      feelsLike.innerHTML = `${data.current.feelslike_c}&#176;`;
       cityName.innerHTML = `${data.location.name}, ${data.location.region}`;
       // cityName.innerHTML = `${data.location.name}, ${data.location.country}`;
       // cityName.innerHTML = data.location.name;
