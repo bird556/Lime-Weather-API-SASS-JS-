@@ -3,7 +3,7 @@
 function fetchWeatherData() {
   //fetch data and dynamically add the city name with template literals
   fetch(
-    `https://api.weatherapi.com/v1/current.json?key=1bc32d2dbafb49afba9182232221708&q=${cityInput}`
+    `https://api.weatherapi.com/v1/current.json?key=b319a4e75b3e4319846182833221708&q=${cityInput}`
   )
     // Now take data (JSON Format) and convert it to a regular JS OBJECT
     .then((response) => response.json())
