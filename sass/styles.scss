@@ -91,7 +91,7 @@ body {
     @include width-height-100();
     object-fit: cover;
     opacity: 0;
-    z-index: -10;
+    z-index: 0;
   }
 
   .overlay {
@@ -329,6 +329,7 @@ body {
   .cities-flex {
     @include p-text($color-primary-dark, 1rem);
     gap: 2rem;
+    z-index: 1;
 
     .city {
       @include liststyle();
@@ -353,6 +354,7 @@ body {
   }
 
   .weather-details-flex {
+    z-index: 1;
     h3 {
       color: $color-primary;
       font-size: 1rem;
