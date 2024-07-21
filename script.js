@@ -1,16 +1,3 @@
-//Clock
-// function startTime() {
-//   const today = new Date();
-//   let h = today.getHours();
-//   let m = today.getMinutes();
-//   let s = today.getSeconds();
-//   m = checkTime(m);
-//   s = checkTime(s);
-//   document.querySelector('.time').innerHTML = h + ':' + m + ':' + s;
-//   setTimeout(startTime, 1000);
-// }
-// startTime();
-
 // Date
 const event = new Date();
 const options = {
@@ -51,29 +38,20 @@ const searchInput = document.querySelector('.search-location');
 let cityName = document.querySelector('.name');
 
 //Default city when page loads
-let cityInput = localStorage.getItem('city');
-
-if (localStorage.getItem('city') === null) {
-  //Default City if there is no local storage
-  cityInput = 'Toronto';
-} else {
-  // Weather Data on City that was last looked/Searched Up!
-  cityInput = localStorage.getItem('city');
-}
+let cityInput = localStorage.getItem('city') || 'Toronto';
 
 // Fetch Weather on Loadup
-fetchWeatherData();
+fetchWeatherData(cityInput);
 
 // Click event changes city name to whatever city was clicked on <li>!
 cities.forEach((city) => {
   city.addEventListener('click', (e) => {
     // Changes City Heading to whatever li Name was clicked
     cityInput = e.target.innerHTML;
-    // cityName.innerHTML = cityInput;
     cityName.innerHTML = cityInput;
     backgroundImage.style.opacity = '0';
     document.body.scrollTop = document.documentElement.scrollTop = 0;
-    fetchWeatherData();
+    fetchWeatherData(cityInput);
     localStorage.setItem('city', cityInput);
   });
 });
@@ -105,7 +83,7 @@ form.addEventListener('submit', (e) => {
     searchInput.value = '';
     //Scroll to the top when city is entered
     document.body.scrollTop = document.documentElement.scrollTop = 0;
-    fetchWeatherData();
+    fetchWeatherData(cityInput);
     localStorage.setItem('city', cityInput);
     e.preventDefault();
   }
