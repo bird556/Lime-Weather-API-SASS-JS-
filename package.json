@@ -5,7 +5,8 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build-css": "node-sass sass/styles.scss public/css/styles.css --output-style compressed"
   },
   "keywords": [],
   "author": "Rashaun Bennett",
@@ -16,5 +17,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "node-sass": "^9.0.0"
   }
 }
