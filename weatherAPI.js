@@ -1,5 +1,6 @@
 function fetchWeatherData(city = 'Toronto') {
-  fetch(`/weather?city=${city}`)
+  // fetch(`/weather?city=${city}`)
+  fetch(`https://lime-weather-api-sass-js.vercel.app/weather?city=${city}`)
     .then((response) => response.json())
     .then((data) => {
       temp.innerHTML = Math.round(data.current.temp_c) + '&#176;';
