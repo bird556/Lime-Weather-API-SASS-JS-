@@ -4,9 +4,12 @@ const axios = require('axios');
 let colors = require('colors');
 const path = require('path');
 require('dotenv').config();
+const cors = require('cors');
 
 const HTTP_PORT = process.env.PORT || 8080; // assign a port
 const API_KEY = process.env.KEY;
+
+app.use(cors());
 
 // Static Middleware
 app.use(express.static(path.join(__dirname, '../public')));
