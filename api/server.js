@@ -1,19 +1,21 @@
 const express = require('express'); // "require" the Express module
-const app = express(); // obtain the "app" object
 const axios = require('axios');
 let colors = require('colors');
 const path = require('path');
 require('dotenv').config();
 const cors = require('cors');
 
+const app = express(); // obtain the "app" object
 const HTTP_PORT = process.env.PORT || 8080; // assign a port
 const API_KEY = process.env.KEY;
 
 app.use(cors());
+
 // Static Middleware
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/weather', async (req, res) => {
+// app.get('/weather', async (req, res) => {
+app.get('/api/weather', async (req, res) => {
   const city = req.query.city || 'Toronto'; // Default to Toronto if no city is provided
   try {
     const response = await axios.get(
@@ -27,7 +29,7 @@ app.get('/weather', async (req, res) => {
 
 // Serve the main page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../', 'index.html'));
+  res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 // start the server on the port and output a confirmation to the console
