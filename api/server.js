@@ -10,11 +10,8 @@ const HTTP_PORT = process.env.PORT || 8080; // assign a port
 const API_KEY = process.env.KEY;
 
 app.use(cors());
-
 // Static Middleware
-app.set('views', path.join(__dirname, '../views'));
 app.use(express.static(path.join(__dirname, '../public')));
-// app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/weather', async (req, res) => {
   const city = req.query.city || 'Toronto'; // Default to Toronto if no city is provided
@@ -30,7 +27,7 @@ app.get('/weather', async (req, res) => {
 
 // Serve the main page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views', 'index.html'));
+  res.sendFile(path.join(__dirname, '../', 'index.html'));
 });
 
 // start the server on the port and output a confirmation to the console
