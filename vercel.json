@@ -18,7 +18,11 @@
       "use": "@vercel/static"
     },
     {
-      "src": "index.html",
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/*.js",
       "use": "@vercel/static"
     }
   ],
@@ -40,7 +44,11 @@
       "dest": "/public/icons1/$1"
     },
     {
-      "src": "/(.*)",
+      "src": "/(.*).js",
+      "dest": "/public/$1.js"
+    },
+    {
+      "src": "/",
       "dest": "/index.html"
     }
   ]
