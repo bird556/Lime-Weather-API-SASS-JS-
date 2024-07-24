@@ -10,11 +10,11 @@
       "use": "@vercel/static"
     },
     {
-      "src": "public/img/*",
+      "src": "public/img/**",
       "use": "@vercel/static"
     },
     {
-      "src": "public/icons1/*",
+      "src": "public/icons1/**",
       "use": "@vercel/static"
     },
     {
@@ -36,11 +36,11 @@
       "dest": "/public/css/$1"
     },
     {
-      "src": "/img/(.*)",
+      "src": "/img/(.**)",
       "dest": "/public/img/$1"
     },
     {
-      "src": "/icons1/(.*)",
+      "src": "/icons1/(.**)",
       "dest": "/public/icons1/$1"
     },
     {
