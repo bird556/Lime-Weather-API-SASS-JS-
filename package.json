@@ -1,11 +1,11 @@
 {
-  "name": "lime-weather-api-sass-js-",
-  "version": "1.0.0",
+  "name": "Lime Weather JavaScript API",
+  "version": "2.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "api/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node api/server.js",
     "build-css": "node-sass sass/styles.scss public/css/styles.css --output-style compressed"
   },
   "keywords": [],

@@ -8,15 +8,8 @@ require('dotenv').config();
 const HTTP_PORT = process.env.PORT || 8080; // assign a port
 const API_KEY = process.env.KEY;
 
-// Configure CORS to allow requests from your Netlify domain
-app.use(
-  cors({
-    origin: 'https://limeweather.netlify.app',
-  })
-);
-
 // Static Middleware
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/weather', async (req, res) => {
   const city = req.query.city || 'Toronto'; // Default to Toronto if no city is provided
@@ -32,7 +25,7 @@ app.get('/weather', async (req, res) => {
 
 // Serve the main page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../', 'index.html'));
 });
 
 // start the server on the port and output a confirmation to the console
