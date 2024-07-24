@@ -13,6 +13,8 @@ app.use(cors());
 
 // Static Middleware
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // app.get('/weather', async (req, res) => {
 app.get('/api/weather', async (req, res) => {

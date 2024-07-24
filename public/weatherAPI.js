@@ -18,7 +18,7 @@ function fetchWeatherData(city = 'Toronto') {
         '/cdn.weatherapi.com/weather/64x64/'.length
       );
 
-      iconWeather.src = `/icons1/${iconId}`;
+      iconWeather.src = `./icons1/${iconId}`;
 
       // Default time of day
       let timeOfDay = `day`;
@@ -32,7 +32,7 @@ function fetchWeatherData(city = 'Toronto') {
       }
 
       if (code == 1000) {
-        backgroundImage.src = `/img/${timeOfDay}/clear2.jpg`;
+        backgroundImage.src = `./img/${timeOfDay}/clear2.jpg`;
       } else if (
         code == 1003 ||
         code == 1006 ||
@@ -42,7 +42,7 @@ function fetchWeatherData(city = 'Toronto') {
         code == 1276 ||
         code == 1282
       ) {
-        backgroundImage.src = `/img/${timeOfDay}/cloudy.jpg`;
+        backgroundImage.src = `./img/${timeOfDay}/cloudy.jpg`;
       } else if (
         code == 1063 ||
         code == 1150 ||
@@ -56,9 +56,9 @@ function fetchWeatherData(city = 'Toronto') {
         code == 1243 ||
         code == 1246
       ) {
-        backgroundImage.src = `/img/${timeOfDay}/rain.jpg`;
+        backgroundImage.src = `./img/${timeOfDay}/rain.jpg`;
       } else if (code == 1009) {
-        backgroundImage.src = `/img/${timeOfDay}/overcast.jpg`;
+        backgroundImage.src = `./img/${timeOfDay}/overcast.jpg`;
       } else if (
         code == 1066 ||
         code == 1169 ||
@@ -77,9 +77,9 @@ function fetchWeatherData(city = 'Toronto') {
         code == 1279 ||
         code == 1282
       ) {
-        backgroundImage.src = `/img/${timeOfDay}/snow.jpg`;
+        backgroundImage.src = `./img/${timeOfDay}/snow.jpg`;
       } else if (code == 1087) {
-        backgroundImage.src = `/img/${timeOfDay}/thunder.jpg`;
+        backgroundImage.src = `./img/${timeOfDay}/thunder.jpg`;
       }
       backgroundImage.style.opacity = '0.8';
     })
