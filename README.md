@@ -1,0 +1,32 @@
+# Lime Weather ☁️⛅
+
+Lime Weather is a simple and elegant weather application that provides real-time weather information for cities around the world. The application fetches weather data from the [WeatherAPI](https://www.weatherapi.com/) and displays it in a user-friendly interface. Users can search for weather information by city name or click on predefined city names to get instant updates.
+
+## Features
+
+- **Real-time Weather Data**: Get current weather conditions, including temperature, humidity, wind speed, and more.
+- **Dynamic Backgrounds**: Background images change based on the weather condition and time of day.
+- **Responsive Design**: The application is fully responsive and works seamlessly on both desktop and mobile devices.
+- **Search Functionality**: Users can search for weather information by entering a city name.
+- **Predefined Cities**: Quick access to weather information for popular cities like Toronto, Dallas, Los Angeles, and more.
+- **Local Storage**: The last searched city is saved in local storage, so the app remembers your preference.
+
+## Technologies Used
+
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Node.js, Express.js
+- **API**: [WeatherAPI](https://www.weatherapi.com/)
+- **Dependencies**:
+  - `axios`: For making HTTP requests to the WeatherAPI.
+  - `colors`: For adding colored console outputs.
+  - `cors`: For enabling Cross-Origin Resource Sharing.
+  - `dotenv`: For managing environment variables.
+  - `express`: For creating the server.
+  - `path`: For handling file paths.
+
+## Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/lime-weather.git
+   cd lime-weather
