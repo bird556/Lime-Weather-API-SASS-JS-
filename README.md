@@ -24,6 +24,9 @@ Lime Weather is a simple and elegant weather application that provides real-time
   - `express`: For creating the server.
   - `path`: For handling file paths.
 
+## Live Demo
+Check out the live demo of Lime Weather: [Live Demo Link](https://lime-weather-api-sass-js.vercel.app/)
+
 ## Installation
 
 1. **Clone the repository**:
