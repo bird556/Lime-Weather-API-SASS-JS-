@@ -30,3 +30,30 @@ Lime Weather is a simple and elegant weather application that provides real-time
    ```bash
    git clone https://github.com/your-username/lime-weather.git
    cd lime-weather
+   
+2. **Install dependencies**:
+   ```bash
+   npm install
+   
+3. **Set up environment variables**:
+   ```bash
+   Create a .env file in the root directory.
+   Add your WeatherAPI key to the .env file:
+   KEY=your_weatherapi_key_here
+   
+4. **Run the server**:
+   ```bash
+   npm start
+   
+5. **Open the application**:
+   ```bash
+   Visit http://localhost:8080 in your browser.
+## Usage
+Search for a City: Enter the name of a city in the search bar and press Enter.
+
+Select a Predefined City: Click on one of the predefined city names to get weather information instantly.
+
+View Weather Details: The application displays temperature, weather condition, humidity, wind speed, and more.
+
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
