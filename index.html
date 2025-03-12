@@ -5,7 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lime Weather </title>
+    <meta name="keywords" content="weather app, real-time weather, Node.js, Express.js, WeatherAPI, Lime Weather">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Lime Weather - Real-Time Weather App">
+    <meta property="og:description" content="A real-time weather app built with Node.js, Express.js, and WeatherAPI.">
+    <meta property="og:image" content="https://lime-weather-api-sass-js.vercel.app/public/img/icon.png">
+    <meta property="og:url" content="https://lime-weather-api-sass-js.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta name="description"
+        content="Lime Weather is a real-time weather app built with Node.js, Express.js, and WeatherAPI. Get temperature, humidity, wind speed, and dynamic backgrounds for cities worldwide.">
+
+    <!-- Twitter -->
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lime Weather - Real-Time Weather App">
+    <meta name="twitter:description" content="A real-time weather app built with Node.js, Express.js, and WeatherAPI.">
+    <meta name="twitter:image" content="https://lime-weather-api-sass-js.vercel.app/public/img/icon.png">
+
+    <title>Lime Weather</title>
 
     <!-- FAV ICON -->
     <link rel="shortcut icon" href="/public/img/icon.png" type="image/x-icon">
@@ -25,7 +42,7 @@
 
     <div class="overlay"></div>
 
-    <img src="" alt="" class="image">
+    <img src="" alt="Dynamic weather background image" class="image">
 
     <div class="container" data-aos="fade-right">
 
@@ -44,7 +61,7 @@
             </div>
 
             <div class="weather-flex">
-                <img class="weather-icon" src="icons1/wi-night-rain.svg" alt="">
+                <img class="weather-icon" src="icons1/wi-night-rain.svg" alt="night-rain">
                 <p class="weather">
                     Raining
                 </p>
@@ -66,7 +83,8 @@
         <div class="search-flex">
             <form id="locationInput">
                 <input type="text" class="search-location" placeholder="Search Location">
-                <button id="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button id="btn" type="submit" aria-label="Search for weather"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
             </form>
 
         </div>
@@ -115,6 +133,21 @@
         AOS.init({
             duration: 1000
         });
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Lime Weather",
+      "description": "A real-time weather app built with Node.js, Express.js, and WeatherAPI.",
+      "applicationCategory": "Weather",
+      "operatingSystem": "Web",
+      "url": "https://lime-weather-api-sass-js.vercel.app/",
+      "author": {
+        "@type": "Person",
+        "name": "Rashaun Bennett"
+      }
+    }
     </script>
 </body>
 
