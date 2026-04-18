@@ -1,4 +1,12 @@
 node_modules
 node_modules/
 .env
+.env.local
 .vercel
+.next/
+next-env.d.ts
+
+# Project docs (local only)
+CLAUDE.md
+context/
+.Claude/
