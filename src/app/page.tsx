@@ -6,6 +6,8 @@ import { Search } from 'lucide-react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import WeatherHero from '@/components/WeatherHero';
 import WeatherHeroSkeleton from '@/components/skeletons/WeatherHeroSkeleton';
+import WeatherDetails from '@/components/WeatherDetails';
+import WeatherDetailsSkeleton from '@/components/skeletons/WeatherDetailsSkeleton';
 import SearchPanel from '@/components/SearchPanel';
 import { fetchWeather } from '@/lib/weather';
 import type { WeatherData } from '@/types/weather';
@@ -62,9 +64,14 @@ export default function Home() {
         </button>
       </header>
 
-      {/* Hero content */}
-      <div className="relative z-10 flex-1 flex items-center justify-center">
-        {loading && <WeatherHeroSkeleton />}
+      {/* Hero + Details content */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center gap-6 pb-10">
+        {loading && (
+          <>
+            <WeatherHeroSkeleton />
+            <WeatherDetailsSkeleton />
+          </>
+        )}
 
         {error && !isSearchOpen && (
           <div className="text-center px-6">
@@ -79,9 +86,12 @@ export default function Home() {
         )}
 
         {!loading && !error && weather && (
-          <AnimatePresence mode="wait">
-            <WeatherHero key={weather.location.name} weather={weather} />
-          </AnimatePresence>
+          <>
+            <AnimatePresence mode="wait">
+              <WeatherHero key={weather.location.name} weather={weather} />
+            </AnimatePresence>
+            <WeatherDetails key={`details-${weather.location.name}`} weather={weather} />
+          </>
         )}
       </div>
 
