@@ -6,6 +6,10 @@ node_modules/
 .next/
 next-env.d.ts
 
+# Playwright
+playwright-report/
+test-results/
+
 # Project docs (local only)
 CLAUDE.md
 context/

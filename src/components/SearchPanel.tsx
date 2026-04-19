@@ -12,57 +12,43 @@ interface Props {
   error: string | null;
 }
 
-const chipVariants = {
-  hidden: { opacity: 0, y: 8 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.05, duration: 0.25, ease: 'easeOut' as const },
-  }),
-};
-
 export default function SearchPanel({ isOpen, onClose, onCitySelect, error }: Props) {
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 50);
+      setTimeout(() => inputRef.current?.focus(), 60);
       setQuery('');
     }
   }, [isOpen]);
 
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, [onClose]);
 
   const handleSubmit = () => {
     const city = query.trim();
-    if (!city) return;
-    onCitySelect(city);
+    if (city) onCitySelect(city);
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
-            className="fixed inset-0 z-20 bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 z-20 bg-black/50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             onClick={onClose}
           />
 
-          {/* Panel */}
           <motion.aside
-            className="fixed top-0 right-0 z-30 h-full w-full sm:w-80 bg-black/80 backdrop-blur-xl border-l border-white/10 flex flex-col p-6 gap-6"
+            className="fixed top-0 right-0 z-30 h-full w-full sm:w-95 glass-strong flex flex-col p-7 gap-6"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -70,17 +56,17 @@ export default function SearchPanel({ isOpen, onClose, onCitySelect, error }: Pr
           >
             {/* Header */}
             <div className="flex items-center justify-between">
-              <span className="text-white font-semibold text-lg">Search City</span>
+              <span className="text-white font-semibold tracking-wide">Search City</span>
               <button
                 onClick={onClose}
-                aria-label="Close search"
-                className="p-1.5 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-colors"
+                aria-label="Close"
+                className="p-1.5 rounded-full hover:bg-white/10 text-white/40 hover:text-white transition-colors"
               >
-                <X size={18} />
+                <X size={16} />
               </button>
             </div>
 
-            {/* Search input */}
+            {/* Input */}
             <div className="flex gap-2">
               <input
                 ref={inputRef}
@@ -89,14 +75,14 @@ export default function SearchPanel({ isOpen, onClose, onCitySelect, error }: Pr
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
                 placeholder="Enter city name..."
-                className="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 text-sm outline-none focus:border-lime focus:ring-1 focus:ring-lime transition-colors"
+                className="flex-1 rounded-xl bg-white/8 border border-white/15 px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none focus:border-lime/60 focus:ring-1 focus:ring-lime/40 transition-colors"
               />
               <button
                 onClick={handleSubmit}
                 aria-label="Search"
-                className="px-4 py-3 bg-lime rounded-xl text-black font-semibold text-sm hover:bg-lime/80 transition-colors flex items-center gap-1.5"
+                className="px-4 py-2.5 bg-lime rounded-xl text-black font-semibold text-sm hover:bg-lime/80 transition-colors"
               >
-                <Search size={16} />
+                <Search size={15} />
               </button>
             </div>
 
@@ -104,7 +90,7 @@ export default function SearchPanel({ isOpen, onClose, onCitySelect, error }: Pr
             <AnimatePresence>
               {error && (
                 <motion.p
-                  className="text-red-400 text-sm -mt-2"
+                  className="text-red-400 text-xs -mt-3"
                   initial={{ opacity: 0, y: -4 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
@@ -116,20 +102,16 @@ export default function SearchPanel({ isOpen, onClose, onCitySelect, error }: Pr
 
             {/* Quick cities */}
             <div className="flex flex-col gap-3">
-              <span className="text-white/40 text-xs uppercase tracking-widest">Quick Cities</span>
+              <span className="text-[10px] uppercase tracking-widest text-white/40">Quick Cities</span>
               <div className="flex flex-wrap gap-2">
-                {QUICK_CITIES.map((city, i) => (
-                  <motion.button
+                {QUICK_CITIES.map((city) => (
+                  <button
                     key={city}
-                    custom={i}
-                    variants={chipVariants}
-                    initial="hidden"
-                    animate="visible"
                     onClick={() => onCitySelect(city)}
-                    className="bg-white/5 hover:bg-lime/10 border border-white/10 hover:border-lime/30 rounded-full px-4 py-1.5 text-sm text-white/80 hover:text-white transition-colors"
+                    className="rounded-full glass px-4 py-1.5 text-xs text-white/70 hover:text-white hover:bg-white/10 transition-colors"
                   >
                     {city}
-                  </motion.button>
+                  </button>
                 ))}
               </div>
             </div>

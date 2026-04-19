@@ -1,73 +1,90 @@
 export const QUICK_CITIES = [
-  "Toronto",
-  "New York",
-  "London",
-  "Tokyo",
-  "Sydney",
-  "Paris",
-  "Dubai",
-  "Los Angeles",
+  'Toronto', 'New York', 'London', 'Tokyo', 'Sydney', 'Paris', 'Dubai', 'Los Angeles',
 ];
 
-export interface GradientConfig {
+export type ParticleType = 'none' | 'stars' | 'clouds' | 'fog' | 'rain' | 'storm' | 'snow';
+
+export interface ConditionAssets {
   gradient: string;
-  particles: "none" | "stars" | "clouds" | "fog" | "rain" | "storm" | "snow";
+  particles: ParticleType;
+  bgDay: string;
+  bgNight: string;
 }
 
-export const CONDITION_GRADIENTS: Record<string, GradientConfig> = {
+const ASSETS: Record<string, ConditionAssets> = {
   sunny: {
-    gradient: "linear-gradient(135deg, #f59e0b 0%, #1e3a5f 100%)",
-    particles: "none",
+    gradient: 'linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(26,23,19,0.92))',
+    particles: 'none',
+    bgDay: '/img/day/clear2.jpg',
+    bgNight: '/img/night/clear2.jpg',
   },
   clear_night: {
-    gradient: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)",
-    particles: "stars",
+    gradient: 'linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(26,23,19,0.95))',
+    particles: 'stars',
+    bgDay: '/img/day/clear2.jpg',
+    bgNight: '/img/night/clear1.jpg',
   },
   partly_cloudy: {
-    gradient: "linear-gradient(135deg, #4b6cb7 0%, #1e2a3a 100%)",
-    particles: "clouds",
+    gradient: 'linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(26,23,19,0.92))',
+    particles: 'clouds',
+    bgDay: '/img/day/cloudy.jpg',
+    bgNight: '/img/night/cloudy.jpg',
   },
   overcast: {
-    gradient: "linear-gradient(135deg, #374151 0%, #1f2937 100%)",
-    particles: "fog",
+    gradient: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(26,23,19,0.9))',
+    particles: 'fog',
+    bgDay: '/img/day/overcast.jpg',
+    bgNight: '/img/night/overcast.jpg',
   },
   rain: {
-    gradient: "linear-gradient(135deg, #1e3a5f 0%, #0a0a0f 100%)",
-    particles: "rain",
+    gradient: 'linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(26,23,19,0.92))',
+    particles: 'rain',
+    bgDay: '/img/day/rain.jpg',
+    bgNight: '/img/night/rain.jpg',
   },
   thunderstorm: {
-    gradient: "linear-gradient(135deg, #2d1b69 0%, #0a0a0f 100%)",
-    particles: "storm",
+    gradient: 'linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(26,23,19,0.95))',
+    particles: 'storm',
+    bgDay: '/img/day/thunder.jpg',
+    bgNight: '/img/night/thunder.jpg',
   },
   snow: {
-    gradient: "linear-gradient(135deg, #bfdbfe 0%, #6b7280 100%)",
-    particles: "snow",
+    gradient: 'linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(26,23,19,0.90))',
+    particles: 'snow',
+    bgDay: '/img/day/snow.jpg',
+    bgNight: '/img/night/snow.jpg',
   },
   fog: {
-    gradient: "linear-gradient(135deg, #9ca3af 0%, #374151 100%)",
-    particles: "fog",
+    gradient: 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(26,23,19,0.9))',
+    particles: 'fog',
+    bgDay: '/img/day/overcast.jpg',
+    bgNight: '/img/night/overcast.jpg',
   },
   default: {
-    gradient: "linear-gradient(135deg, #1e3a5f 0%, #0a0a0f 100%)",
-    particles: "none",
+    gradient: 'linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(26,23,19,0.9))',
+    particles: 'none',
+    bgDay: '/img/hero-cloud.jpg',
+    bgNight: '/img/hero-cloud.jpg',
   },
 };
 
-export function getGradientConfig(code: number, isDay: number): GradientConfig {
-  // Thunderstorm
-  if ([1087, 1273, 1276, 1279, 1282].includes(code)) return CONDITION_GRADIENTS.thunderstorm;
-  // Snow
-  if ([1066, 1114, 1117, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258].includes(code)) return CONDITION_GRADIENTS.snow;
-  // Rain / Drizzle
-  if ([1063, 1072, 1150, 1153, 1168, 1171, 1180, 1183, 1186, 1189, 1192, 1195, 1198, 1201, 1240, 1243, 1246].includes(code)) return CONDITION_GRADIENTS.rain;
-  // Fog / Mist
-  if ([1030, 1135, 1147].includes(code)) return CONDITION_GRADIENTS.fog;
-  // Overcast
-  if (code === 1009) return CONDITION_GRADIENTS.overcast;
-  // Partly Cloudy / Cloudy
-  if ([1003, 1006].includes(code)) return CONDITION_GRADIENTS.partly_cloudy;
-  // Clear / Sunny
-  if (code === 1000) return isDay ? CONDITION_GRADIENTS.sunny : CONDITION_GRADIENTS.clear_night;
+function getKey(code: number, isDay: number): string {
+  if ([1087, 1273, 1276, 1279, 1282].includes(code)) return 'thunderstorm';
+  if ([1066, 1114, 1117, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258].includes(code)) return 'snow';
+  if ([1063, 1072, 1150, 1153, 1168, 1171, 1180, 1183, 1186, 1189, 1192, 1195, 1198, 1201, 1240, 1243, 1246].includes(code)) return 'rain';
+  if ([1030, 1135, 1147].includes(code)) return 'fog';
+  if (code === 1009) return 'overcast';
+  if ([1003, 1006].includes(code)) return 'partly_cloudy';
+  if (code === 1000) return isDay ? 'sunny' : 'clear_night';
+  return 'default';
+}
 
-  return CONDITION_GRADIENTS.default;
+export function getConditionAssets(code: number, isDay: number): ConditionAssets {
+  return ASSETS[getKey(code, isDay)] ?? ASSETS.default;
+}
+
+// Keep for backwards compat with any leftover imports
+export function getGradientConfig(code: number, isDay: number) {
+  const a = getConditionAssets(code, isDay);
+  return { gradient: a.gradient, particles: a.particles };
 }

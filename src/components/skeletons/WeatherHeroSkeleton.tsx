@@ -1,16 +1,25 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 export default function WeatherHeroSkeleton() {
   return (
-    <div className="flex flex-col items-center justify-center text-center px-6 py-12 animate-pulse">
+    <motion.div
+      className="flex flex-col items-center justify-center text-center px-6 py-12"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
       {/* Time */}
-      <div className="h-3 w-24 bg-white/10 rounded mb-2" />
+      <div className="skeleton h-3 w-28 mb-2" />
       {/* Date */}
-      <div className="h-3 w-36 bg-white/10 rounded mb-8" />
-      {/* Temp */}
-      <div className="h-40 w-56 bg-white/10 rounded-2xl mb-4" />
+      <div className="skeleton h-3 w-40 mb-8" />
+      {/* Temperature */}
+      <div className="skeleton h-40 w-56 rounded-2xl mb-4" />
       {/* City */}
-      <div className="h-10 w-48 bg-white/10 rounded-xl mb-3" />
+      <div className="skeleton h-10 w-44 rounded-xl mb-3" />
       {/* Condition */}
-      <div className="h-6 w-32 bg-white/10 rounded-lg mb-8" />
-    </div>
+      <div className="skeleton h-6 w-36 rounded-lg mb-8" />
+    </motion.div>
   );
 }
