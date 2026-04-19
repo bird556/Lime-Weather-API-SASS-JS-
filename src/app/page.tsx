@@ -6,6 +6,7 @@ import { Search } from 'lucide-react';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import WeatherHero from '@/components/WeatherHero';
 import WeatherHeroSkeleton from '@/components/skeletons/WeatherHeroSkeleton';
+import SearchPanel from '@/components/SearchPanel';
 import { fetchWeather } from '@/lib/weather';
 import type { WeatherData } from '@/types/weather';
 
@@ -15,6 +16,7 @@ export default function Home() {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const loadWeather = useCallback(async (city: string) => {
     setLoading(true);
@@ -33,6 +35,11 @@ export default function Home() {
     loadWeather(DEFAULT_CITY);
   }, [loadWeather]);
 
+  const handleCitySelect = useCallback((city: string) => {
+    setIsSearchOpen(false);
+    loadWeather(city);
+  }, [loadWeather]);
+
   return (
     <main className="relative min-h-screen flex flex-col overflow-hidden">
       {/* Animated background */}
@@ -47,6 +54,7 @@ export default function Home() {
       <header className="relative z-10 flex items-center justify-between px-6 pt-6">
         <span className="text-lime font-bold text-xl tracking-tight">Lime Weather</span>
         <button
+          onClick={() => setIsSearchOpen(true)}
           aria-label="Open city search"
           className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
         >
@@ -58,7 +66,7 @@ export default function Home() {
       <div className="relative z-10 flex-1 flex items-center justify-center">
         {loading && <WeatherHeroSkeleton />}
 
-        {error && (
+        {error && !isSearchOpen && (
           <div className="text-center px-6">
             <p className="text-white/60 text-lg">{error}</p>
             <button
@@ -76,6 +84,14 @@ export default function Home() {
           </AnimatePresence>
         )}
       </div>
+
+      {/* Search panel */}
+      <SearchPanel
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onCitySelect={handleCitySelect}
+        error={error}
+      />
     </main>
   );
 }
